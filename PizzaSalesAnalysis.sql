@@ -12,7 +12,7 @@ FROM pizza_types
 GROUP BY category
 
 -- 2. Total revenue of the store
-SELECT ROUND(SUM(o.quantity*p.price),2)
+SELECT ROUND(SUM(o.quantity*p.price),2) as revenue
 FROM order_details o
 JOIN pizzas p
 ON o.pizza_id = p.pizza_id
@@ -25,11 +25,14 @@ ON o.pizza_id = p.pizza_id
 GROUP BY size
 
 -- 4. Identify the most common pizza category orderd
-SELECT size, SUM(quantity) AS number_of_pizzas
+SELECT category, SUM(quantity) AS number_of_pizzas
 FROM order_details o
 JOIN pizzas p
 ON o.pizza_id = p.pizza_id
-GROUP BY size
+JOIN pizza_types pt
+ON p.pizza_type_id = pt.pizza_type_id
+GROUP BY category
+ORDER BY number_of_pizzas DESC
 
 -- 5. How many orders and number of pizzas do we have each day? 
 SELECT date, COUNT(o.order_id) AS number_of_orders, SUM(od.quantity) AS number_of_pizzas
@@ -73,7 +76,8 @@ GROUP BY PT.name
 ORDER BY quantity DESC
 
 -- 10. Top 5 pizzas by revenue
-SELECT TOP 5 PT.name, 
+SELECT TOP 5 
+	PT.name, 
 	SUM(od.quantity*price) AS revenue,
 	CONCAT(ROUND(
 			SUM(od.quantity*price)
