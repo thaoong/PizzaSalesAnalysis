@@ -1,7 +1,7 @@
 # Pizza Sales Analysis using SQL
 This project aims to analyze sales situation of a pizza store using SQL, find the key insights based on the analysis results and help business make data-driven decisions that can potentially increase the store's revenue.
 ## About the dataset
-For this project, I sourced pizza sales data from Kaggle (link) which contains four csv files: 
+For this project, the data source is Pizza place sales data from Kaggle ([link](https://www.kaggle.com/datasets/mysarahmadbhat/pizza-place-sales)) which contains four csv files: 
 * order_details.csv
 * orders.csv
 * pizza_types.csv
@@ -190,5 +190,9 @@ ON PT.pizza_type_id = P.pizza_type_id
 GROUP BY PT.category
 ```
 ![image](https://github.com/user-attachments/assets/e355ad29-5068-4d60-b466-5c2e1097875f)
-## Key insights
-
+## Conclusion
+* In 2015, the pizza store had **21350** orders and gained revenue **817860.05$** with the most common pizza size orderd was **size L**.
+* On an average the store have **136** customers each day. Busiest day is **Friday** and the customer flow is minimum on **Sunday**. Considering this it would be beneficial to allocate additional resources on these days accordingly. The busiest hours of a day are **12 noon and 6pm**.
+* The categories have no huge difference in the number of pizzas sold and the contribution rate to revenue of each category is quite even. The difference between the category with the most and the least contribution is only **3%**.
+* **Thai Chicken Pizza** is the best selling pizza as per revenue and **Classic Deluxe Pizza** is the best selling pizza as per quantity.
+* **Brie Carrer Pizza** is the least selling pizza as per revenue, only contribute **1.4%** to revenue.
